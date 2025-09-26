@@ -25,6 +25,7 @@ type ComboboxContextType<T> = {
   getOptionLabel: (item: T) => string;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ComboboxContext = React.createContext<ComboboxContextType<any> | null>(
   null
 );

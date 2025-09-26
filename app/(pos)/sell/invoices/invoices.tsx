@@ -15,6 +15,7 @@ import Filter from "@/components/filter";
 import { Button } from "@/components/ui/button";
 
 import { sellingInvoices } from "@/types/selling-invoice.types";
+import { Suspense } from "react";
 
 const options = [
   { label: "All", value: "all" },
@@ -27,10 +28,14 @@ export default function Invoices() {
     <main className="py-8 px-4 xl:container xl:mx-auto">
       <div className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-6">
         <h1 className="text-2xl font-bold">Selling Invoices</h1>
-        <Filter filter="payment_method" options={options} />
+        <Suspense>
+          <Filter filter="payment_method" options={options} />{" "}
+        </Suspense>
       </div>
 
-      <InvoicesTable />
+      <Suspense>
+        <InvoicesTable />
+      </Suspense>
     </main>
   );
 }
